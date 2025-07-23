@@ -39,12 +39,16 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.droidcon.simplejokes.R
-import org.koin.androidx.compose.koinViewModel
+import org.jetbrains.compose.resources.stringResource
+import org.koin.compose.viewmodel.koinViewModel
+import simplejokes.composeapp.generated.resources.Res
+import simplejokes.composeapp.generated.resources.jokes_list_title
+import simplejokes.composeapp.generated.resources.preferences_title
+import simplejokes.composeapp.generated.resources.tab_all_jokes
+import simplejokes.composeapp.generated.resources.tab_favorites
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -76,7 +80,7 @@ fun JokesListScreenRoot(
         contentWindowInsets = ScaffoldDefaults.contentWindowInsets,
         topBar = {
             TopAppBar(
-                title = { Text(stringResource(R.string.jokes_list_title)) },
+                title = { Text(stringResource(Res.string.jokes_list_title)) },
                 actions = {
                     // Add IconButton for the menu
                     IconButton(onClick = { menuExpanded = true }) {
@@ -91,7 +95,7 @@ fun JokesListScreenRoot(
                         onDismissRequest = { menuExpanded = false }
                     ) {
                         DropdownMenuItem(
-                            text = { Text(stringResource(R.string.preferences_title)) },
+                            text = { Text(stringResource(Res.string.preferences_title)) },
                             onClick = {
                                 menuExpanded = false
                                 onOpenPreferences()
@@ -120,8 +124,8 @@ private fun JokesListScreen(
     // Add tab state
     var selectedTabIndex by rememberSaveable { mutableIntStateOf(0) }
     val tabs = listOf(
-        stringResource(R.string.tab_all_jokes),
-        stringResource(R.string.tab_favorites)
+        stringResource(Res.string.tab_all_jokes),
+        stringResource(Res.string.tab_favorites)
     )
 
     val pullToRefreshState = rememberPullToRefreshState()

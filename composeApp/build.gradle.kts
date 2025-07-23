@@ -84,6 +84,8 @@ kotlin {
             // Network
             implementation(libs.bundles.ktor)
 
+            // Enable Icons for Material3 Design in Compose Multiplatform
+            implementation(libs.material.icons.extended)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

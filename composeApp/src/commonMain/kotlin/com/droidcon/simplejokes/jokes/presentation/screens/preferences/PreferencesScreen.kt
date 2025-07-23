@@ -23,12 +23,18 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.droidcon.simplejokes.R
 import com.droidcon.simplejokes.core.domain.Languages
-import org.koin.androidx.compose.koinViewModel
+import org.jetbrains.compose.resources.stringResource
+import org.koin.compose.viewmodel.koinViewModel
+import simplejokes.composeapp.generated.resources.Res
+import simplejokes.composeapp.generated.resources.preference_language
+import simplejokes.composeapp.generated.resources.preference_theme
+import simplejokes.composeapp.generated.resources.preferences_title
+import simplejokes.composeapp.generated.resources.theme_label_dark
+import simplejokes.composeapp.generated.resources.theme_label_default
+import simplejokes.composeapp.generated.resources.theme_lable_light
 
 @Composable
 fun PreferencesScreenRoot(
@@ -58,7 +64,7 @@ fun PreferencesScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(stringResource(R.string.preferences_title)) },
+                title = { Text(stringResource(Res.string.preferences_title)) },
                 actions = {
                     IconButton(onClick = onGoBack) {
                         Icon(
@@ -78,7 +84,7 @@ fun PreferencesScreen(
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             // --- Language Section ---
-            PreferenceSectionTitle(stringResource(R.string.preference_language))
+            PreferenceSectionTitle(stringResource(Res.string.preference_language))
             Languages.entries.forEach { language ->
                 PreferenceOption(
                     label = language.displayName,
@@ -91,21 +97,21 @@ fun PreferencesScreen(
             HorizontalDivider()
 
             // --- Theme Section ---
-            PreferenceSectionTitle(stringResource(R.string.preference_theme))
+            PreferenceSectionTitle(stringResource(Res.string.preference_theme))
             PreferenceOption( // Use generic helper
-                label = stringResource(R.string.theme_label_default),
+                label = stringResource(Res.string.theme_label_default),
                 value = "",
                 currentSelection = state.selectedTheme,
                 onSelected = { onIntent(PreferencesIntent.UpdateTheme("")) }
             )
             PreferenceOption(
-                label = stringResource(R.string.theme_lable_light),
+                label = stringResource(Res.string.theme_lable_light),
                 value = "LIGHT",
                 currentSelection = state.selectedTheme, // Use state
                 onSelected = { onIntent(PreferencesIntent.UpdateTheme("LIGHT")) }
             )
             PreferenceOption(
-                label = stringResource(R.string.theme_label_dark),
+                label = stringResource(Res.string.theme_label_dark),
                 value = "DARK",
                 currentSelection = state.selectedTheme, // Use state
                 onSelected = { onIntent(PreferencesIntent.UpdateTheme("DARK")) }
