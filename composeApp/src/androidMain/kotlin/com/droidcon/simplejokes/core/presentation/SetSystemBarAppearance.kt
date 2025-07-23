@@ -7,7 +7,7 @@ import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowInsetsControllerCompat
 
 @Composable
-fun SetSystemBarAppearance(darkTheme: Boolean) {
+actual fun SetSystemBarAppearance(darkTheme: Boolean) {
     val view = LocalView.current
     if (!view.isInEditMode) { // Do not run in Composable previews
         val window = (view.context as? Activity)?.window

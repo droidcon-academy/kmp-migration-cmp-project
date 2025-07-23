@@ -8,8 +8,8 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
 import java.util.Locale
 
-class Localization(private val context: Context) {
-    fun updateLocale(languageTag: String) {
+actual class Localization(private val context: Context) {
+    actual fun updateLocale(languageTag: String) {
         val locale = Locale(languageTag)
         Locale.setDefault(locale)
         val config = context.resources.configuration

@@ -9,9 +9,9 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 
-class Vault(private val context: Context) {
+actual class Vault(private val context: Context) {
 
-    val dataStore: DataStore<Preferences> = PreferenceDataStoreFactory.create(
+    actual val dataStore: DataStore<Preferences> = PreferenceDataStoreFactory.create(
         scope = CoroutineScope(Dispatchers.IO + SupervisorJob()),
         produceFile = { context.preferencesDataStoreFile("settings") }
     )
