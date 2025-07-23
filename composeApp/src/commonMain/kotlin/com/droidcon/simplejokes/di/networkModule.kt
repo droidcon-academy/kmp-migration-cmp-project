@@ -2,8 +2,6 @@ package com.droidcon.simplejokes.di
 
 import com.droidcon.simplejokes.jokes.data.network.JokesApiService
 import io.ktor.client.HttpClient
-import io.ktor.client.engine.HttpClientEngine
-import io.ktor.client.engine.okhttp.OkHttp
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.defaultRequest
 import io.ktor.client.plugins.logging.LogLevel
@@ -18,9 +16,6 @@ import org.koin.dsl.module
 
 
 val networkModule = module {
-    single<HttpClientEngine> {
-        OkHttp.create()
-    }
 
     single<HttpClient> {
         HttpClient(engine = get()) {

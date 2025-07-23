@@ -6,7 +6,7 @@ import com.droidcon.simplejokes.jokes.data.database.JokesDatabase
 import org.koin.dsl.module
 
 
-val databaseModule = module {
+actual val databaseModule = module {
     single {
         Room.databaseBuilder(
             context = get(),
