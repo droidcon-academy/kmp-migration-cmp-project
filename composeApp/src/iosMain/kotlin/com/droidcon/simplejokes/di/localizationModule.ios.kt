@@ -1,6 +1,10 @@
 package com.droidcon.simplejokes.di
 
-import org.koin.core.module.Module
+import com.droidcon.simplejokes.core.presentation.Localization
+import org.koin.dsl.module
 
-actual val localizationModule: Module
-    get() = TODO("Not yet implemented")
+actual val localizationModule = module {
+    single<Localization> {
+        Localization()
+    }
+}

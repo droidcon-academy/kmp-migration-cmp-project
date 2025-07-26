@@ -12,10 +12,13 @@ import io.ktor.http.contentType
 import io.ktor.http.takeFrom
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
+import org.koin.core.module.Module
 import org.koin.dsl.module
 
+expect fun Module.bindPlatformNetworkModule()
 
 val networkModule = module {
+    bindPlatformNetworkModule()
 
     single<HttpClient> {
         HttpClient(engine = get()) {

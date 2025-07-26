@@ -2,9 +2,9 @@ package com.droidcon.simplejokes.di
 
 import io.ktor.client.engine.HttpClientEngine
 import io.ktor.client.engine.okhttp.OkHttp
-import org.koin.dsl.module
+import org.koin.core.module.Module
 
-actual val platformModule = module {
+actual fun Module.bindPlatformNetworkModule() {
     single<HttpClientEngine> {
         OkHttp.create()
     }

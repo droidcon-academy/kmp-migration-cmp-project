@@ -15,7 +15,6 @@ fun initKoin(config: KoinAppDeclaration? = null) {
             snackbarModule,
             vaultModule,
             viewModelsModule,
-            platformModule // This contains platform-specific dependencies
         )
     }
 }

@@ -1,22 +1,16 @@
 package com.droidcon.simplejokes.di
 
 import androidx.room.Room
-import com.droidcon.simplejokes.jokes.data.database.JokesDao
+import androidx.room.RoomDatabase
 import com.droidcon.simplejokes.jokes.data.database.JokesDatabase
-import org.koin.dsl.module
+import org.koin.core.module.Module
 
+actual fun Module.bindPlatformDatabaseModule() {
 
-actual val databaseModule = module {
-    single {
-        Room.databaseBuilder(
+    single<RoomDatabase.Builder<JokesDatabase>> {
+        Room.databaseBuilder<JokesDatabase>(
             context = get(),
-            klass = JokesDatabase::class.java,
             name = JokesDatabase.DB_NAME
         )
-            .build()
-    }
-
-    single<JokesDao> {
-        get<JokesDatabase>().jokesDao
     }
 }
